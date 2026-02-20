@@ -8,12 +8,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://sanzid-portfolio.netlify.app/']
+}));
 app.use(express.json());
-app.use(express.static(__dirname)); // Serve static files from current directory
 
-// MongoDB Connection
-const MONGO_URI = "mongodb+srv://sanzidis99_db_user:sanzidMONGOdb@proj1.2pgqduk.mongodb.net/portfolio_db?retryWrites=true&w=majority&appName=PROJ1";
 
 mongoose.connect(MONGO_URI)
   .then(() => console.log('✅ MongoDB Connected'))
