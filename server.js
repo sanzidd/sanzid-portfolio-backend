@@ -15,11 +15,21 @@ const PORT = process.env.PORT || 3000;
 // ===============================
 // Middleware
 // ===============================
+// ===============================
+// Middleware
+// ===============================
+const allowedOrigins = [
+  'https://sanzid-portfolio.netlify.app'
+];
+
 app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'https://sanzid-portfolio.netlify.app'
-  ]
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
 
 app.use(express.json());
