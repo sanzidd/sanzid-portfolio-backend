@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 // ===============================
 const allowedOrigins = [
-  'https://sanzid-portfolio.netlify.app'
+  'https://sanzid-portfolio.vercel.app'
 ];
 
 app.use(cors({
